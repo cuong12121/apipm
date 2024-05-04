@@ -8,6 +8,7 @@
 .env.backup
 .phpunit.result.cache
 /public/js
+/composer.lock
 
 /public/images
 /public/uploads
