@@ -12,9 +12,8 @@ class orderController extends Controller
     {
     	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->paginate(8)->toArray();
 
-    
-
-    	dd($data);
+   
+    	dd(json_encode($data));
 
     }
 }
