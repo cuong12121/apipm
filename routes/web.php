@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admins'], function() {
 
     Route::get('kho', 'khoController@index')->name('kho.admin');
 
+    Route::get('order-data', 'Backend\orderController@getdata');
+
 
 
 });    
