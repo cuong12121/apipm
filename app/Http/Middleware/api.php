@@ -17,7 +17,7 @@ class api
     {
         $token = $request->header('token');
 
-        if($token != 'eecc19a1cabb51a5080f6f56399f7e82'){
+        if($token != '7ojTLYXnzV0EH1wRGxOmvLFga'){
 
             return response()->json(['message'=> 'token not found'], 401);
         }
