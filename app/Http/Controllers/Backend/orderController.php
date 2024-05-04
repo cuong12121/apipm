@@ -10,9 +10,9 @@ class orderController extends Controller
 {
     public function getdata()
     {
-    	$data  = DB::table('fs_order_uploads_detail')->get()->paginate(8);
+    	// $data  = DB::table('fs_order_uploads_detail')->get()->paginate(8);
 
-    	dd($data);
+    	dd(1);
 
     }
 }
