@@ -7,6 +7,7 @@
 .htaccess
 .env.backup
 .phpunit.result.cache
+/public/js
 
 /public/images
 /public/uploads
