@@ -9,7 +9,7 @@
 .phpunit.result.cache
 /public/js
 /composer.lock
-
+/storage
 /public/images
 /public/uploads
 /public/media
