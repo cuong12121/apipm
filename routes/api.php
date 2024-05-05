@@ -15,9 +15,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-    Route::get('get-data-order-details', 'Backend\orderController@getdata');
+
 });
 Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
+
+Route::get('get-data-order-details', 'Backend\orderController@getdata')->middleware('auth:api');
 
 
 
