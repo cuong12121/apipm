@@ -33,7 +33,9 @@ class orderController extends Controller
 
 	        	return response($orders);
 	        else:
-	        	return response('không tồn tại đơn hàng');
+
+	        	$array = [];
+	        	return response($array);
 	        endif;	
 	    endif;    
 
