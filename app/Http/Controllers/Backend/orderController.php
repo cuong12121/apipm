@@ -23,7 +23,7 @@ class orderController extends Controller
         $clearData = strip_tags($clearData);
 
         $search = $clearData; 
-        	shop_name
+        	
 
         $orders = DB::table('fs_order_uploads_detail')->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->get();
 
