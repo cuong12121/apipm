@@ -18,21 +18,24 @@ class orderController extends Controller
 
     public function searchDataOrder(Request $request)
     {
-    	$clearData = trim($request->search);
 
-        $clearData = strip_tags($clearData);
+    	if(!empty($request->search)):
+	    	$clearData = trim($request->search);
 
-        $search = $clearData; 
-        	
+	        $clearData = strip_tags($clearData);
 
-        $orders = DB::table('fs_order_uploads_detail')->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->get();
+	        $search = $clearData; 
+	        	
 
-        if(!empty($orders)):
+	        $orders = DB::table('fs_order_uploads_detail')->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->get();
 
-        	return response($orders);
-        else:
-        	return response('không tồn tại đơn hàng');
-        endif;	
+	        if(!empty($orders)):
+
+	        	return response($orders);
+	        else:
+	        	return response('không tồn tại đơn hàng');
+	        endif;	
+	    endif;    
 
     }
 }
