@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
 
-Route::get('get-data-order-details', 'Backend\orderController@getdata')->middleware('auth:api');
+Route::get('get-data-order-details', 'Backend\orderController@getdata');
 
 
 
