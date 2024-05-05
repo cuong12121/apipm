@@ -21,5 +21,9 @@ Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
 
 Route::get('get-data-order-details', 'Backend\orderController@getdata');
 
+Route::get('search-data-order-details', 'Backend\orderController@searchDataOrder');
+
+
+
 
 
