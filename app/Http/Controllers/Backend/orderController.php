@@ -10,9 +10,17 @@ class orderController extends Controller
 {
     public function getdata()
     {
-    	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->paginate(12)->toArray();
+    	$user_package_id = $_GET['id_user'];
 
-    	return response($data);
+    	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('user_package_id', 9)->paginate(12)->toArray();
+
+    	if(!empty($data)):
+
+    		return response($data);
+    	else:
+    	
+    		return [];
+    	endif;		
 
     }
 
