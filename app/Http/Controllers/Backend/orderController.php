@@ -27,7 +27,7 @@ class orderController extends Controller
 	        $search = $clearData; 
 	        	
 
-	        $orders = DB::table('fs_order_uploads_detail')->select('product_name','shop_name','shop_code','date','record_id', 'total_price', 'count', 'tracking_code','shop_name')->OrderBy('id','desc')->skip(500)->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->take(12)->get();
+	        $orders = DB::table('fs_order_uploads_detail')->select('product_name','shop_name','shop_code','date','record_id', 'total_price', 'count', 'tracking_code','shop_name')->OrderBy('id','desc')->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->paginate(12);
 
 	        if(!empty($orders)):
 
