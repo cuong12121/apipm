@@ -33,17 +33,20 @@ class orderController extends Controller
 	        $clearData = strip_tags($clearData);
 
 	        $search = $clearData; 
+
+	        $user_package_id = $request->user_package_id;
 	        	
 
-	        $orders = DB::table('fs_order_uploads_detail')->select('product_name','shop_name','shop_code','date','record_id', 'total_price', 'count', 'tracking_code','shop_name')->where('tracking_code', 'like', '%'.$search.'%')->Orwhere('shop_code', $search)->Orwhere('shop_name', $search)->take(12)->OrderBy('id','desc')->get();
+	        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
 
 	        if(!empty($orders)):
 
-	        	return response($orders);
+	        	DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")])
+	        	return response('Đóng hàng thành công');
 	        else:
 
-	        	$array = [];
-	        	return response($array);
+	        	
+	        	return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
 	        endif;	
 	    endif;    
 
