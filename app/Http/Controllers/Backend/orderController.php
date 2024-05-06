@@ -12,7 +12,7 @@ class orderController extends Controller
     {
     	$user_package_id = $_GET['id_user'];
 
-    	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('user_package_id', 9)->paginate(12)->toArray();
+    	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('user_package_id', $user_package_id)->where('is_package',1)->paginate(12)->toArray();
 
     	if(!empty($data)):
 
