@@ -48,7 +48,9 @@ class orderController extends Controller
 	        	
 	        	return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
 	        endif;	
-	    endif;    
+	    endif; 
+
+	    return response(1);   
 
     }
 }
