@@ -28,26 +28,43 @@ class orderController extends Controller
     {
 
     	if(!empty($request->search)):
-	    	$clearData = trim($request->search);
 
-	        $clearData = strip_tags($clearData);
+    		$active =  $request->active;
 
-	        $search = $clearData; 
+    		if($active ==1):
 
-	        $user_package_id = $request->user_package_id;
-	        	
+		    	$clearData = trim($request->search);
 
-	        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
+		        $clearData = strip_tags($clearData);
 
-	        if(!empty($orders)):
+		        $search = $clearData; 
 
-	        	$update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
-	        	return response('Đóng hàng thành công');
-	        else:
+		        $user_package_id = $request->user_package_id;
+		        	
 
-	        	
-	        	return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
-	        endif;	
+		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
+
+		        if(!empty($orders)):
+
+		        	$update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
+		        	return response('Đóng hàng thành công đơn hàng có mã đơn'.$search);
+		        else:
+
+		        	
+		        	return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
+		        endif;	
+		    else:
+
+		    	if($active ==0):
+			    	$id = $request->search;
+
+			    	$update = DB::table('fs_order_uploads_detail')->where('id', $id)->update(['is_package'=>0,'user_package_id'=>'', 'date_package'=>'']);
+			    	return response('Hoàn thành công đơn hàng');
+
+			    @endif;	
+
+		    endif    	
+
 	    endif; 
 
 	    // return response(1);   
