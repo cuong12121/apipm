@@ -63,7 +63,7 @@ class orderController extends Controller
 
 			    endif;	
 
-		    endif    	
+		    endif;    	
 
 	    endif; 
 
