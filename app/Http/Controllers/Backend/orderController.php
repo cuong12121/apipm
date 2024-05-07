@@ -47,7 +47,7 @@ class orderController extends Controller
 		        if(!empty($orders)):
 
 		        	$update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
-		        	return response('Đóng hàng thành công đơn hàng có mã đơn'.$search);
+		        	return response('Đóng hàng thành công đơn hàng có mã đơn '.$search);
 		        else:
 
 		        	
