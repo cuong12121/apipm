@@ -50,7 +50,7 @@ class orderController extends Controller
 	        endif;	
 	    endif; 
 
-	    return response(1);   
+	    // return response(1);   
 
     }
 }
