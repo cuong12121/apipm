@@ -58,7 +58,7 @@ class orderController extends Controller
 		    	if($active ==0):
 			    	$id = $request->search;
 
-			    	$update = DB::table('fs_order_uploads_detail')->where('id', $id)->update(['is_package'=>0,'user_package_id'=>'', 'date_package'=>'']);
+			    	$update = DB::table('fs_order_uploads_detail')->where('id', $id)->update(['is_package'=>0,'user_package_id'=>NULL, 'date_package'=>'']);
 			    	return response('Hoàn thành công đơn hàng');
 
 			    endif;	
