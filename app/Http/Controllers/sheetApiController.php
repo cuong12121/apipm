@@ -456,6 +456,10 @@ class sheetApiController extends Controller
 
                 $insert['address'] = 1;
 
+                dd($insert);
+
+                die;
+
                 DB::table('fs_quantity')->insert($insert);
             }    
         }
