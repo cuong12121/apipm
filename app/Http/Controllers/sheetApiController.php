@@ -455,10 +455,9 @@ class sheetApiController extends Controller
                 // 1 la ha noi
 
                 $insert['address'] = 1;
+                $insert['created_at'] = Carbon::now();
+                $insert['updated_at'] = Carbon::now();
 
-                dd($insert);
-
-                die;
 
                 DB::table('fs_quantity')->insert($insert);
             }    
