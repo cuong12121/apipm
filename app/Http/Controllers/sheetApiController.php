@@ -411,7 +411,7 @@ class sheetApiController extends Controller
     {
         $number =2;
 
-        $this->getdataQuantity($number);
+        // $this->getdataQuantity($number);
 
         $this->getdataQuantityMN($number);
         
