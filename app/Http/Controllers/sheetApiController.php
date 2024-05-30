@@ -445,6 +445,23 @@ class sheetApiController extends Controller
        
         $number = 1;
 
+        for($i=2; $i<count($values); $i++){
+            $insert['model'] = $val[$i][0];
+
+            $insert['quantity'] =   !empty($val[$i][28])?str_replace(',', '.',$val[$i][28]):0;
+
+            $insert['number']  = $number;
+
+            // 1 la ha noi
+
+            $insert['address'] = 1;
+            $insert['created_at'] = Carbon::now();
+            $insert['updated_at'] = Carbon::now();
+
+
+            DB::table('fs_quantity')->insert($insert);
+        }
+
         foreach($values as $key=> $val){
 
             if($key>1){
