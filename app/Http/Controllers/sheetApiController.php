@@ -452,6 +452,8 @@ class sheetApiController extends Controller
 
                 $insert['number']  = $number;
 
+                dd($insert['quantity']);
+
                 // 1 la ha noi
 
                 $insert['address'] = 1;
