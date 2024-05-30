@@ -440,6 +440,8 @@ class sheetApiController extends Controller
 
         $values = $response->getValues();
 
+        dd(count($values));
+
        
         $number = 1;
 
