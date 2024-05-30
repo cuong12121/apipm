@@ -441,7 +441,7 @@ class sheetApiController extends Controller
         $values = $response->getValues();
 
        
-        $number = $values;
+        $number = 1;
 
         foreach($values as $key=> $val){
 
@@ -452,8 +452,6 @@ class sheetApiController extends Controller
                 $insert['quantity'] =   !empty($val[28])?str_replace(',', '.', $val[28]):0;
 
                 $insert['number']  = $number;
-
-               
 
                 // 1 la ha noi
 
