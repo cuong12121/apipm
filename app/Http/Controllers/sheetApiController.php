@@ -583,7 +583,7 @@ class sheetApiController extends Controller
 
             // tìm id product trong bảng sản phẩm
 
-            $vals = DB::table('fs_products')->where('code', $value->model)->first();
+            $vals = DB::table('fs_products')->where('code', trim($value->model))->first();
 
             if(!empty($vals->id)){
                  $update = DB::table('fs_quantity')->where('id', $value->id)->update(['product_id'=>$vals->id]);
