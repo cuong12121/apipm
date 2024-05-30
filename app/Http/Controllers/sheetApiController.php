@@ -442,7 +442,7 @@ class sheetApiController extends Controller
 
         $number = $values;
 
-         dd($values);
+         dd($values[88]);
 
         foreach($values as $key=> $val){
 
