@@ -440,6 +440,10 @@ class sheetApiController extends Controller
 
         $values = $response->getValues();
 
+        dd($values);
+
+        die;
+
         $number = $values;
 
         foreach($values as $key=> $val){
