@@ -432,7 +432,7 @@ class sheetApiController extends Controller
         $service = new \Google\Service\Sheets($client);
         $id_page = '1ySTEhx3QF7_gkNEWbsegwMysZubjJtMy_hQwizRp5Vc'; 
         $spreadsheetId = $id_page; 
-        $range = 'Tổng!A:K'; 
+        $range = 'NXT PL!A:AC'; 
 
         //phần nhận dữ liệu 
 
