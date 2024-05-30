@@ -430,9 +430,9 @@ class sheetApiController extends Controller
         $client->setPrompt('select_account consent');
 
         $service = new \Google\Service\Sheets($client);
-        $id_page = '1ySTEhx3QF7_gkNEWbsegwMysZubjJtMy_hQwizRp5Vc'; 
+        $id_page = '1dWx77w3OKyisRa2QUNfVBX2145bgR58vTX6OHUgxaj8'; 
         $spreadsheetId = $id_page; 
-        $range = 'NXT PL!A:K'; 
+        $range = 'NXTPL!A:AC'; 
 
         //phần nhận dữ liệu 
 
