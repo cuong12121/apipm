@@ -442,18 +442,13 @@ class sheetApiController extends Controller
 
         $number = $values;
 
-         dd($values[441
-
-
-         ]);
-
         foreach($values as $key=> $val){
 
             if($key>1){
 
                 $insert['model'] = $val[0];
 
-                $insert['quantity'] =   !empty($val[24])?str_replace(',', '.', $val[24]):0;
+                $insert['quantity'] =   !empty($val[28])?str_replace(',', '.', $val[28]):0;
 
                 $insert['number']  = $number;
 
