@@ -442,7 +442,7 @@ class sheetApiController extends Controller
 
         $number = $values;
 
-         dd($values[442
+         dd($values[441
 
 
          ]);
