@@ -446,9 +446,9 @@ class sheetApiController extends Controller
         $number = 1;
 
         for($i=2; $i<count($values); $i++){
-            $insert['model'] = $val[$i][0];
+            $insert['model'] = $values[$i][0];
 
-            $insert['quantity'] =   !empty($val[$i][28])?str_replace(',', '.',$val[$i][28]):0;
+            $insert['quantity'] =   !empty($values[$i][28])?str_replace(',', '.',$values[$i][28]):0;
 
             $insert['number']  = $number;
 
