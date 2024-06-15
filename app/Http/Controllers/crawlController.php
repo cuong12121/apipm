@@ -10,6 +10,8 @@ use Carbon\Carbon;
 
 class crawlController extends Controller
 {
+
+
     public function crawPostTinhTe()
     {
 
@@ -33,6 +35,54 @@ class crawlController extends Controller
        
 
     }
+
+
+    public function vietnameseToEnglish($text) {
+        // Chuyển đổi dấu câu
+        $text = preg_replace('/[,\.;?!]/u', '.', $text);
+
+        // Chuyển đổi chữ có dấu
+        $patterns = array(
+            '/[áàảãạăắằẳẵặâấầẩẫậ]/u',
+            '/[éèẻẽẹêếềểễệ]/u',
+            '/[óòỏõọôốồổỗộơớờởỡợ]/u',
+            '/[íìỉĩị]/u',
+            '/[úùủũụưứừửữự]/u',
+            '/[ýỳỷỹỵ]/u',
+            '/đ/u'
+        );
+        $replacements = array('a', 'e', 'o', 'i', 'u', 'y', 'd');
+        $text = preg_replace($patterns, $replacements, $text);
+
+        // Chuyển đổi từ/cụm từ (ví dụ)
+        $text = str_replace('xin chào', 'hello', $text);
+
+        return $text;
+    }
+
+    public function convert_name_file()
+    {
+        $data = DB::table('fs_order_uploads')->select('file_pdf','id')->whereBetween('id', [189222, 199425])->get();
+        $dem = 0;
+
+        foreach ($data as $key => $value) {
+
+            $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public', $value->file_pdf);
+
+            if(!file_exists($url){
+                $dem++;
+                $insert = ['file'=>$url, 'record_id'=>$value->id];
+                DB::table('check_error_pdf')->insert($insert);
+                echo $dem;
+
+            }
+            
+        }
+        echo "thanh cong";
+
+        
+    }
+
 
 
     public function getLink()
