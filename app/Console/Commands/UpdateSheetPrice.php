@@ -6,6 +6,9 @@ use Illuminate\Console\Command;
 
 use App\Http\Controllers\sheetApiController;
 
+use App\Http\Controllers\crawlController;
+
+
 class UpdateSheetPrice extends Command
 {
     /**
@@ -39,9 +42,9 @@ class UpdateSheetPrice extends Command
      */
     public function handle()
     {
-        $crawl = new sheetApiController();
+        $crawl = new crawlController();
 
-        $crawl->showComboCodePD();
+        $crawl->convert_name_file();
 
     }
 }
