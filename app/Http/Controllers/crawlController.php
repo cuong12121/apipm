@@ -69,7 +69,7 @@ class crawlController extends Controller
 
             $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public', $value->file_pdf);
 
-            if(!file_exists($url){
+            if(!file_exists($url)){
                 $dem++;
                 $insert = ['file'=>$url, 'record_id'=>$value->id];
                 DB::table('check_error_pdf')->insert($insert);
