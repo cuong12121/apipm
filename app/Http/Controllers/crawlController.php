@@ -104,7 +104,7 @@ class crawlController extends Controller
                 echo $link[0];
                 if(empty($link[0])){
 
-                    var_dump($link);
+                    var_dump($find);
 
                     die;
 
