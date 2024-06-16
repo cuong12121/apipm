@@ -109,7 +109,7 @@ class crawlController extends Controller
                     $name_$link1 = basename($link_1);
 
 
-                    $path = str_replace($name_$link1, '', $link1);
+                    $path = str_replace($name_$link1, '', $link_1);
 
                     
 
