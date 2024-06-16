@@ -99,45 +99,41 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                 var_dump($link);
+                $link1 = $link[0];
+
+                $name_$link1 = basename($link1);
+
+
+                $path = str_replace($name_$link1, '', $link1);
+
+                var_dump($path);
 
                 die;
 
+                foreach ($link as $key => $vals) {
+
+                    $vals_link = $vals;
+
+                    if($key!=0){
+
+                        $vals_link = $path.$vals;
+
+                    }
 
 
+                    $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
 
+                    $check = $this->isLinkActive($url);
 
-                // $link1 = $link[0];
+                    if(!$check){
+                        $dem++;
+                        $insert = ['file'=>$url, 'record_id'=>$value->id];
+                        DB::table('check_error_pdf')->insert($insert);
+                        echo $dem.'\n';
 
-                // $name_$link1 = basename($link1);
-
-
-                // $path = str_replace($name_$link1, '', $link1);
-
-                // foreach ($link as $key => $vals) {
-
-                //     $vals_link = $vals;
-
-                //     if($key!=0){
-
-                //         $vals_link = $path.$vals;
-
-                //     }
-
-
-                //     $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
-
-                //     $check = $this->isLinkActive($url);
-
-                //     if(!$check){
-                //         $dem++;
-                //         $insert = ['file'=>$url, 'record_id'=>$value->id];
-                //         DB::table('check_error_pdf')->insert($insert);
-                //         echo $dem.'\n';
-
-                //     }
+                    }
                     
-                // }
+                }
             }
             else{
                 $link =  $value->file_pdf;
