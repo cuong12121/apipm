@@ -98,7 +98,7 @@ class crawlController extends Controller
                 $link = explode(',', $value->file_pdf);
 
                 foreach ($link as $key => $value) {
-                    $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
+                    $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $value);
 
                     $check = $this->isLinkActive($url);
 
