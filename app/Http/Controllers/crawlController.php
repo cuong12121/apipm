@@ -94,63 +94,67 @@ class crawlController extends Controller
 
             $find = strpos($value->file_pdf, ",");
 
-            var_dump($find);
+           
+
+            if($find !== false){
+                $link = explode(',', $value->file_pdf);
+
+                 var_dump($link);
 
                 die;
 
-            // if($find !== false){
-            //     $link = explode(',', $value->file_pdf);
 
 
 
-            //     $link1 = $link[0];
 
-            //     $name_$link1 = basename($link1);
+                $link1 = $link[0];
 
-
-            //     $path = str_replace($name_$link1, '', $link1);
-
-            //     foreach ($link as $key => $vals) {
-
-            //         $vals_link = $vals;
-
-            //         if($key!=0){
-
-            //             $vals_link = $path.$vals;
-
-            //         }
+                $name_$link1 = basename($link1);
 
 
-            //         $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
+                $path = str_replace($name_$link1, '', $link1);
 
-            //         $check = $this->isLinkActive($url);
+                foreach ($link as $key => $vals) {
 
-            //         if(!$check){
-            //             $dem++;
-            //             $insert = ['file'=>$url, 'record_id'=>$value->id];
-            //             DB::table('check_error_pdf')->insert($insert);
-            //             echo $dem.'\n';
+                    $vals_link = $vals;
 
-            //         }
+                    if($key!=0){
+
+                        $vals_link = $path.$vals;
+
+                    }
+
+
+                    $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
+
+                    $check = $this->isLinkActive($url);
+
+                    if(!$check){
+                        $dem++;
+                        $insert = ['file'=>$url, 'record_id'=>$value->id];
+                        DB::table('check_error_pdf')->insert($insert);
+                        echo $dem.'\n';
+
+                    }
                     
-            //     }
-            // }
-            // else{
-            //     $link =  $value->file_pdf;
+                }
+            }
+            else{
+                $link =  $value->file_pdf;
 
-            //     $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
+                $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
 
-            //     $check = $this->isLinkActive($url);
+                $check = $this->isLinkActive($url);
 
-            //     if(!$check){
-            //         $dem++;
-            //         $insert = ['file'=>$url, 'record_id'=>$value->id];
-            //         DB::table('check_error_pdf')->insert($insert);
-            //         echo $dem.'\n';
+                if(!$check){
+                    $dem++;
+                    $insert = ['file'=>$url, 'record_id'=>$value->id];
+                    DB::table('check_error_pdf')->insert($insert);
+                    echo $dem.'\n';
 
-            //     }
+                }
 
-            // }
+            }
             
         }
         echo "thanh cong";
