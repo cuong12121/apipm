@@ -101,6 +101,10 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
+                var_dump($link);
+
+                die;
+
                 $link1 = $link[0]??'';
 
                 $name_$link1 = basename($link1);
@@ -108,9 +112,7 @@ class crawlController extends Controller
 
                 $path = str_replace($name_$link1, '', $link1);
 
-                var_dump($path);
-
-                die;
+                
 
                 foreach ($link as $key => $vals) {
 
