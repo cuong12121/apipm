@@ -60,6 +60,29 @@ class crawlController extends Controller
         return $text;
     }
 
+    public function isLinkActive($url) {
+        $ch = curl_init($url); // Khởi tạo cURL session
+
+        // Thiết lập các tùy chọn cURL
+        curl_setopt($ch, CURLOPT_NOBODY, true); // Chỉ lấy header, không lấy nội dung
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Theo dõi chuyển hướng
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Trả về kết quả dưới dạng chuỗi
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Thời gian chờ tối đa 10 giây
+
+        curl_exec($ch); // Thực hiện yêu cầu
+
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); // Lấy mã trạng thái HTTP
+
+        curl_close($ch); // Đóng cURL session
+
+        // Kiểm tra mã trạng thái
+        if ($httpCode >= 200 && $httpCode < 300) {
+            return true; // Liên kết hoạt động
+        } else {
+            return false; // Liên kết không hoạt động
+        }
+    }
+
     public function convert_name_file()
     {
         $data = DB::table('fs_order_uploads')->select('file_pdf','id')->whereBetween('id', [189222, 199425])->get();
@@ -69,7 +92,9 @@ class crawlController extends Controller
 
             $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $value->file_pdf);
 
-            if(!file_exists($url)){
+            $check = $this->isLinkActive($url);
+
+            if(!$check){
                 $dem++;
                 $insert = ['file'=>$url, 'record_id'=>$value->id];
                 DB::table('check_error_pdf')->insert($insert);
