@@ -101,49 +101,47 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                echo $link[0].'/n';
-                if(empty($link[0])){
+              
+                if(!empty($link[0])){
 
-                    var_dump($find);
+                    $link1 = $link[0]??'';
 
-                    die;
+                    $name_$link1 = basename($link1);
+
+
+                    $path = str_replace($name_$link1, '', $link1);
+
+                    
+
+                    foreach ($link as $key => $vals) {
+
+                        $vals_link = $vals;
+
+                        if($key!=0){
+
+                            $vals_link = $path.$vals;
+
+                        }
+
+
+                        $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
+
+                        $check = $this->isLinkActive($url);
+
+                        if(!$check){
+                            $dem++;
+                            $insert = ['file'=>$url, 'record_id'=>$value->id];
+                            DB::table('check_error_pdf')->insert($insert);
+                            echo $dem'\n';
+
+                        }
+                        
+                    }
 
                 }
                
 
-                // $link1 = $link[0]??'';
-
-                // $name_$link1 = basename($link1);
-
-
-                // $path = str_replace($name_$link1, '', $link1);
-
-                
-
-                // foreach ($link as $key => $vals) {
-
-                //     $vals_link = $vals;
-
-                //     if($key!=0){
-
-                //         $vals_link = $path.$vals;
-
-                //     }
-
-
-                //     $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
-
-                //     $check = $this->isLinkActive($url);
-
-                //     if(!$check){
-                //         $dem++;
-                //         $insert = ['file'=>$url, 'record_id'=>$value->id];
-                //         DB::table('check_error_pdf')->insert($insert);
-                //         echo $dem.'\n';
-
-                //     }
-                    
-                // }
+               
             }
             else{
                 $link =  $value->file_pdf;
