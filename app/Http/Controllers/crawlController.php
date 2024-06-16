@@ -98,7 +98,7 @@ class crawlController extends Controller
                 $dem++;
                 $insert = ['file'=>$url, 'record_id'=>$value->id];
                 DB::table('check_error_pdf')->insert($insert);
-                echo $dem.'\n';
+                echo $dem.\n;
 
             }
             
