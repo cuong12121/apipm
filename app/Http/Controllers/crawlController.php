@@ -95,6 +95,10 @@ class crawlController extends Controller
             foreach ($link as $key => $value) {
                 $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
 
+                var_dump($url);
+
+                die;
+
                 $check = $this->isLinkActive($url);
 
                 if(!$check){
