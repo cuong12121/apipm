@@ -101,8 +101,14 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                var_dump($link[0]);
+                echo $link[0];
+                if(empty($link[0])){
 
+                    var_dump($link);
+
+                    die;
+
+                }
                 die;
 
                 // $link1 = $link[0]??'';
