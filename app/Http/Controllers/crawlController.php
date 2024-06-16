@@ -126,6 +126,8 @@ class crawlController extends Controller
 
                         $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $vals_link);
 
+                        $url = str_replace('.pdft','.pdf', $url);
+
                         $check = $this->isLinkActive($url);
 
                         if(!$check){
