@@ -92,9 +92,9 @@ class crawlController extends Controller
 
             $dem++;
 
-            $find = strpos($str $value->file_pdf, ",");
+            $find = strpos($value->file_pdf, ",");
 
-            if($find){
+            if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
                 foreach ($link as $key => $value) {
