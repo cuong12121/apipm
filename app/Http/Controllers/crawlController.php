@@ -67,7 +67,7 @@ class crawlController extends Controller
 
         foreach ($data as $key => $value) {
 
-            $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public', $value->file_pdf);
+            $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $value->file_pdf);
 
             if(!file_exists($url)){
                 $dem++;
