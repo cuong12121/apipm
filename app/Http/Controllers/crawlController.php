@@ -99,6 +99,8 @@ class crawlController extends Controller
 
                 var_dump($link);
 
+                die;
+
                 $link1 = $link[0];
 
                 $name_$link1 = basename($link1);
