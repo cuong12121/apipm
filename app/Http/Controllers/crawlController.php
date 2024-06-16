@@ -83,6 +83,29 @@ class crawlController extends Controller
         }
     }
 
+    public function convert_name_files()
+    {
+        $files = DB::table('check_error_pdf')->select('record_id','file')->get();
+
+        foreach ($files as $key => $value) {
+            
+            $name =  substr(basename($value->file), 1);
+
+            $new_link = str_replace(basename($value->file), $name, $value->file);
+
+
+            $check = $this->isLinkActive($new_link);
+
+            if(!$check){
+                
+                echo 'record_id = '.$value->record_id.' và link là '.$new_link.' không tìm thấy';
+
+            }   
+
+
+        }
+    }
+
     public function convert_name_file()
     {
         $data = DB::table('fs_order_uploads')->select('file_pdf','id')->whereBetween('id', [189222, 199425])->get();

@@ -44,7 +44,7 @@ class UpdateSheetPrice extends Command
     {
         $crawl = new crawlController();
 
-        $crawl->convert_name_file();
+        $crawl->convert_name_files();
 
     }
 }
