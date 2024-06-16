@@ -101,7 +101,7 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                echo $link[0];
+                echo $link[0].'/n';
                 if(empty($link[0])){
 
                     var_dump($find);
@@ -109,7 +109,7 @@ class crawlController extends Controller
                     die;
 
                 }
-                die;
+               
 
                 // $link1 = $link[0]??'';
 
