@@ -92,8 +92,6 @@ class crawlController extends Controller
 
         foreach ($data as $key => $value) {
 
-            $dem++;
-
             $find = strpos($value->file_pdf, ",");
 
            
