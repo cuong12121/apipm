@@ -90,14 +90,32 @@ class crawlController extends Controller
 
         foreach ($data as $key => $value) {
 
-            $link = explode(',', $value->file_pdf);
+            $dem++;
 
-            foreach ($link as $key => $value) {
+            $find = strpos($str $value->file_pdf, ",");
+
+            if($find){
+                $link = explode(',', $value->file_pdf);
+
+                foreach ($link as $key => $value) {
+                    $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
+
+                    $check = $this->isLinkActive($url);
+
+                    if(!$check){
+                        $dem++;
+                        $insert = ['file'=>$url, 'record_id'=>$value->id];
+                        DB::table('check_error_pdf')->insert($insert);
+                        echo $dem.'\n';
+
+                    }
+                    
+                }
+            }
+            else{
+                $link =  $value->file_pdf;
+
                 $url = str_replace('files/orders/2024', 'https://cachsuadienmay.vn/public/uploads', $link);
-
-                var_dump($url);
-
-                die;
 
                 $check = $this->isLinkActive($url);
 
@@ -108,10 +126,8 @@ class crawlController extends Controller
                     echo $dem.'\n';
 
                 }
-                
-            }
 
-           
+            }
             
         }
         echo "thanh cong";
