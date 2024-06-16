@@ -104,9 +104,9 @@ class crawlController extends Controller
               
                 if(!empty($link[0])){
 
-                    $link1 = $link[0]??'';
+                    $link_1 = $link[0];
 
-                    $name_$link1 = basename($link1);
+                    $name_$link1 = basename($link_1);
 
 
                     $path = str_replace($name_$link1, '', $link1);
