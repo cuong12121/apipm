@@ -88,6 +88,8 @@ class crawlController extends Controller
         $data = DB::table('fs_order_uploads')->select('file_pdf','id')->whereBetween('id', [189222, 199425])->get();
         $dem = 0;
 
+
+
         foreach ($data as $key => $value) {
 
             $dem++;
@@ -99,7 +101,7 @@ class crawlController extends Controller
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                $link1 = $link[0];
+                $link1 = $link[0]??'';
 
                 $name_$link1 = basename($link1);
 
