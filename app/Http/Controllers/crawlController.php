@@ -94,12 +94,14 @@ class crawlController extends Controller
 
             $find = strpos($value->file_pdf, ",");
 
+            var_dump($find);
+
+                die;
+
             if($find !== false){
                 $link = explode(',', $value->file_pdf);
 
-                var_dump($link);
 
-                die;
 
                 $link1 = $link[0];
 
