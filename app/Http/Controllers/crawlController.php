@@ -91,7 +91,9 @@ class crawlController extends Controller
             
             $name =  substr(basename($value->file), 1);
 
-            if($name[0]=='t'){
+            $links = $value->$value;
+
+            if($links[0]=='t'){
                 $new_link = str_replace(basename($value->file), $name, $value->file);
             }
             else{
