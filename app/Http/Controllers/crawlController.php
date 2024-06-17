@@ -91,14 +91,20 @@ class crawlController extends Controller
             
             $name =  substr(basename($value->file), 1);
 
-            $new_link = str_replace(basename($value->file), $name, $value->file);
+            if($name[0]=='t'){
+                $new_link = str_replace(basename($value->file), $name, $value->file);
+            }
+            else{
+                $new_link = $value->file;
+            }
 
+    
 
             $check = $this->isLinkActive($new_link);
 
             if(!$check){
-                
-                echo 'record_id = '.$value->record_id.' và link là '.$new_link.' không tìm thấy';
+
+                echo 'record_id = '.$value->record_id.' và link là '.$new_link.' không tìm thấy'."\n";
 
             }   
 
