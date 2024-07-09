@@ -16,7 +16,7 @@ class orderController extends Controller
 
     		$data  = DB::table('fs_order_uploads_detail')->orderBy('date_package', 'desc')->where('user_package_id', $user_package_id)->where('is_package',1)->paginate(12)->toArray();
         else:
-        	$data  = DB::table('fs_order_uploads_detail')->orderBy('date_package', 'desc')->where('is_package',1)->paginate(12)->toArray();	
+        	$data  = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('is_package',1)->paginate(12)->toArray();	
 
         endif;
 
