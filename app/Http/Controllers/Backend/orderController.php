@@ -52,10 +52,10 @@ class orderController extends Controller
 
 	    	if(!empty($data)):
 
-	    		return $startOfDay;
+	    		return response($data);
 	    	else:
 	    	
-	    		return $endOfDay;
+	    		return [];
 	    	endif;		
     	}
 
