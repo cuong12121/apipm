@@ -48,7 +48,7 @@ class orderController extends Controller
 
     	if(!empty($date1) && !empty($user_package_id)&&!empty($user_package_id)){
     		
-    		$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->whereBetween('date_package', [$startOfDay, $endOfDay])->get()->toArray();
+    		$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->whereBetween('date_package', [$startOfDay, $endOfDay])->paginate(12)->toArray();
 
 	    	if(!empty($data)):
 
