@@ -33,13 +33,21 @@ class orderController extends Controller
 
     public function SearchDataOfUser(Request $request)
     {
-    	$date =  $request->date1;
+    	$date1 =  $request->date1;
+
+    	$date2 =  $request->date2;
+
+
+		$startOfDay = Carbon::parse($date1)->startOfDay();
+		$endOfDay = Carbon::parse($date2)->endOfDay();
+
+		$orders = Order::whereBetween('order_date', [$startOfDay, $endOfDay])->get();
 
     	$user_package_id = $request->name;
 
     	if(!empty($date) && !empty($user_package_id)){
     		
-    		$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->where('date_package', $date)->get()->toArray();
+    		$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->::whereBetween('date_package', [$startOfDay, $endOfDay])->get()->toArray();
 
 	    	if(!empty($data)):
 
