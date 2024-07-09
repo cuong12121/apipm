@@ -42,7 +42,7 @@ class orderController extends Controller
 		$startOfDay = Carbon::parse($date1)->startOfDay();
 		$endOfDay = Carbon::parse($date2)->endOfDay();
 
-		$orders = Order::whereBetween('order_date', [$startOfDay, $endOfDay])->get();
+		
 
     	$user_package_id = $request->name;
 
