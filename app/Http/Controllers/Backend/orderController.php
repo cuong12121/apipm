@@ -55,7 +55,7 @@ class orderController extends Controller
 	    		return response($data);
 	    	else:
 	    	
-	    		return [];
+	    		return $endOfDay;
 	    	endif;		
     	}
 
