@@ -30,6 +30,30 @@ class orderController extends Controller
 
     }
 
+
+    public function SearchDataOfUser(Request $request)
+    {
+    	$date =  $request->date1;
+
+    	$user_package_id = $request->name;
+
+    	if(!empty($date) && !empty($user_package_id)){
+    		
+    		$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->where('date_package', $date)->get()->toArray();
+
+	    	if(!empty($data)):
+
+	    		return response($data);
+	    	else:
+	    	
+	    		return [];
+	    	endif;		
+    	}
+
+    	
+
+    }
+
     public function searchDataOrder(Request $request)
     {
 
