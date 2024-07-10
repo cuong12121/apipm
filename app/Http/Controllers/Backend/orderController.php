@@ -83,7 +83,9 @@ class orderController extends Controller
 
 		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
 
-		        if(!empty($orders)):
+		        $check_order = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 1)->where('tracking_code', $search)->first();
+
+		        if(!empty($orders) && empty($check_order)):
 
 		        	$update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
 		        	return response('Đóng hàng thành công đơn hàng có mã đơn '.$search);
