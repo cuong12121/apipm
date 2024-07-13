@@ -88,9 +88,10 @@ class orderController extends Controller
 			        foreach ($orders as $key => $value) {
 			        	
 				        $update = DB::table('fs_order_uploads_detail')->where('id', $value->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
+
 				        
-				        return response('Đóng hàng thành công đơn hàng có mã đơn '.$search);
 			        }
+			        return response('Đóng hàng thành công'.$orders->count().' đơn hàng có mã vận đơn: '.$search);
 		        else:
 		       		return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
 			    endif;	 	
