@@ -83,7 +83,7 @@ class orderController extends Controller
 
 		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
 
-		        $check_order = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 1)->where('tracking_code', $search)->first();
+		        // $check_order = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 1)->where('tracking_code', $search)->first();
 
 		        if(!empty($orders) && empty($check_order)):
 
