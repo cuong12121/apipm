@@ -81,19 +81,21 @@ class orderController extends Controller
 		        $user_package_id = $request->user_package_id;
 		        	
 
-		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->first();
+		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->get();
 
-		        // $check_order = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 1)->where('tracking_code', $search)->first();
+		        if(!empty($orders)):
 
-		        if(!empty($orders) && empty($check_order)):
-
-		        	$update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
-		        	return response('Đóng hàng thành công đơn hàng có mã đơn '.$search);
+			        foreach ($orders as $key => $value) {
+			        	
+				        $update = DB::table('fs_order_uploads_detail')->where('id', $value->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
+				        
+				        return response('Đóng hàng thành công đơn hàng có mã đơn '.$search);
+			        }
 		        else:
+		       		return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
+			    endif;	 	
 
-		        	
-		        	return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
-		        endif;	
+
 		    else:
 
 		    	if($active ==0):
