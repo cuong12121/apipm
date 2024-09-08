@@ -63,6 +63,37 @@ class orderController extends Controller
 
     }
 
+    public function SearchDataOfOrder(Request $request)
+    {
+    	$date1 =  $request->date1;
+
+    	$date2 =  $request->date2;
+
+
+		$startOfDay = Carbon::parse($date1)->startOfDay();
+		$endOfDay = Carbon::parse($date2)->endOfDay();
+
+		
+
+    	if(!empty($date1) && !empty($user_package_id)&&!empty($user_package_id)){
+    		
+    		$data = DB::table('fs_order_uploads')->where('is_package', 1)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('id', 'desc')->paginate(10)->toArray();
+
+	    	if(!empty($data)):
+
+	    		return response($data);
+	    	else:
+	    	
+	    		return [];
+	    	endif;		
+    	}
+
+    	
+
+    }
+
+
+
     public function searchDataOrder(Request $request)
     {
 
