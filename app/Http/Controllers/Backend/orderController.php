@@ -96,7 +96,7 @@ class orderController extends Controller
     	if(!empty($search)){
 
     		$data = DB::table('fs_order_uploads')
-            ->join('fs_order_uploads_details', 'fs_order_uploads.id', '=', 'fs_order_uploads_details.user_id')->where('fs_order_uploads_details.code',$search)
+            ->join('fs_order_uploads_detail', 'fs_order_uploads.id', '=', 'fs_order_uploads_detail.user_id')->where('fs_order_uploads_detail.code',$search)
             ->get()->toArray();
     		
     	}	
