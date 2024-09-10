@@ -88,8 +88,26 @@ class orderController extends Controller
 	    	endif;		
     	}
 
-    	
+    }
 
+    public function searchDataToCodeOrder(Request $request)
+    {
+    	$search =  trim($request->search);
+    	if(!empty($search)){
+
+    		$data = DB::table('fs_order_uploads')
+            ->join('fs_order_uploads_details', 'fs_order_uploads.id', '=', 'fs_order_uploads_details.user_id')->where('fs_order_uploads_details.code',$search)
+            ->get()->toArray();
+    		
+    	}	
+
+    	if(!empty($data)):
+
+    		return response($data);
+    	else:
+    	
+    		return [];
+    	endif;	
     }
 
 
