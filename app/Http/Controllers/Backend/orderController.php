@@ -142,7 +142,7 @@ class orderController extends Controller
 
 				        
 			        
-			        return response('Đóng hàng thành công '.$orders->count().' đơn hàng có mã vận đơn: '.$search);
+			        return response('Đóng hàng thành công đơn hàng có mã vận đơn: '.$search);
 		        else:
 		       		return response('Đóng hàng không thành công, vui lòng kiểm tra lại mã đơn');
 			    endif;	 	
