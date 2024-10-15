@@ -130,7 +130,7 @@ class orderController extends Controller
 
 		        $user_package_id = $request->user_package_id;
 		        	
-		        $checkorders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->last();
+		        $checkorders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->get()->last();
 
 		     
 		        if(!$checkorders->isEmpty()):
