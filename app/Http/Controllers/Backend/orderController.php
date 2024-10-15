@@ -133,7 +133,7 @@ class orderController extends Controller
 		        $checkorders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->get()->last();
 
 		     
-		        if(!$checkorders->isEmpty()):
+		        if(!empty($checkorders)):
 
 				    $update = DB::table('fs_order_uploads_detail')->where('id', $checkorders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
 
