@@ -114,6 +114,7 @@ class orderController extends Controller
 
     public function searchDataOrder(Request $request)
     {
+    	date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     	if(!empty($request->search)):
 
@@ -129,15 +130,11 @@ class orderController extends Controller
 
 		        $user_package_id = $request->user_package_id;
 		        	
-		        $checkorders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 1)->where('tracking_code', $search)->get();
-
-		        $orders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->get()->last();
+		        $checkorders = DB::table('fs_order_uploads_detail')->select('id')->where('is_package', 0)->where('tracking_code', $search)->get();
 
 		     
-		        if($checkorders->isEmpty() && !empty($orders)):
+		        if(!$checkorders->isEmpty()):
 
-			        
-			        	
 				    $update = DB::table('fs_order_uploads_detail')->where('id', $orders->id)->update(['is_package'=>1,'user_package_id'=>$user_package_id, 'date_package'=>date("Y-m-d H:i:s")]);
 
 				        
