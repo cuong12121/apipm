@@ -41,15 +41,53 @@ class sheetApiController extends Controller
             
             echo $values[$i][0].'<br>';
             
-            
-            
-            
         }
        echo 'thành công';
-        
-            
-           
+    
     }    
+
+    public function show_data_sale()
+    {
+        $client = new \Google\Client();
+        $client->setApplicationName('Google Sheets API PHP');
+        $client->setScopes('https://www.googleapis.com/auth/spreadsheets');
+        $client->setAuthConfig(storage_path('app/key.json'));
+        $client->setAccessType('offline');
+        $client->setPrompt('select_account consent');
+
+        $service = new \Google\Service\Sheets($client);
+        $spreadsheetId = '1pogJMPoPVF6NsWyJEGmRsc1XcKymYcYQW3Y5sNzYYxs'; 
+
+
+        $range = 'sale1!A:E'; 
+
+        //phần nhận dữ liệu 
+
+        $response = $service->spreadsheets_values->get($spreadsheetId, $range);
+
+        $values = $response->getValues();
+
+        $k = 0;
+
+        $data = [];
+       
+        for ($i=1; $i < count($values); $i++) { 
+
+            if(!empty($values[$i][0])){
+
+                $k++;
+
+                $data[$k]['model'] = $values[$i][0];
+
+                $data[$k]['sale'] = $values[$i][3];
+
+              
+            }
+        }
+
+        print_r(json_encode($data));
+
+    } 
 
     public function testApi()
     {

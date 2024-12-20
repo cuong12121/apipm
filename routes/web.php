@@ -21,6 +21,8 @@ Route::get('test-api', 'sheetApiController@getdataQuantity');
 
 Route::get('test-api2', 'sheetApiController@showComboCodePD');
 
+Route::get('test-api3', 'sheetApiController@show_data_sale');
+
 
 
 Route::get('test-api-1', 'sheetApiController@getdataQuantityMN');
