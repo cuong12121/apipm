@@ -85,8 +85,16 @@ class sheetApiController extends Controller
             }
         }
 
-        print_r(json_encode($data));
+        $redis = new \Redis();
 
+            // Thiết lập kết nối
+        $redis->connect('127.0.0.1', 6379);
+
+         
+        $redis->set("sale_model", json_encode($data));
+         
+        echo"thành công";
+  
     } 
 
     public function testApi()
