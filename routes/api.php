@@ -30,6 +30,8 @@ Route::get('search-data-order-to-date','Backend\orderController@searchDataToCode
 
 Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
 
+Route::get('show-data-order-new', 'sheetApiController@show_order_details')
+
 Route::get('get-data-order-details', 'Backend\orderController@getdata');
 
 Route::get('search-data-order-details', 'Backend\orderController@searchDataOrder');

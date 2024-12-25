@@ -933,6 +933,15 @@ class sheetApiController extends Controller
 
     }
 
+    public function show_order_details()
+    {
+        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->limit(100)->get();
+
+        $json = json_encode($result);
+
+        return $json;
+    }
+
     //phần check giá cho sheet 
 
     public function getModelsToSheet()
