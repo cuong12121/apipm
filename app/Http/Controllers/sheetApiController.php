@@ -67,7 +67,7 @@ class sheetApiController extends Controller
 
         $values = $response->getValues();
 
-        dd($values);
+       
 
         $k = 0;
 
@@ -81,7 +81,7 @@ class sheetApiController extends Controller
 
                 $data[$k]['model'] = $values[$i][0];
 
-                $data[$k]['sale'] = $values[$i][3];
+                $data[$k]['sale'] = $values[$i][2];
 
               
             }
