@@ -67,6 +67,8 @@ class sheetApiController extends Controller
 
         $values = $response->getValues();
 
+        dd($values);
+
         $k = 0;
 
         $data = [];
