@@ -108,13 +108,15 @@ class orderController extends Controller
     		
     	}	
 
-    	if(!empty($data)):
+    	return response($data);
 
-    		return response($data);
-    	else:
+    	// if(!empty($data)):
+
+    	// 	return response($data);
+    	// else:
     	
-    		return [];
-    	endif;	
+    	// 	return [];
+    	// endif;	
     }
 
 
