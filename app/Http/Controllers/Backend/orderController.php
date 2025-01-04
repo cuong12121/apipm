@@ -102,13 +102,13 @@ class orderController extends Controller
     	$search =  trim($request->search);
     	if(!empty($search)){
 
-    		$data = DB::table('fs_order_uploads')
-            ->join('fs_order_uploads_detail', 'fs_order_uploads.id', '=', 'fs_order_uploads_detail.user_id')->where('fs_order_uploads_detail.code',$search)->OrWhere('fs_order_uploads_detail.tracking_code', $search)
+    		$data = DB::table('fs_order_uploads_detail')
+            ->Where('tracking_code', $search)
             ->get()->toArray();
     		
     	}	
 
-    	return 1;
+    	return response($data);
 
     	// if(!empty($data)):
 
