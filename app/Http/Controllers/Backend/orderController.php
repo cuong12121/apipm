@@ -41,7 +41,7 @@ class orderController extends Controller
 		$startOfDay = Carbon::parse($date1)->startOfDay();
 		$endOfDay = Carbon::parse($date2)->endOfDay();
 
-		$warehouse_id = $request->options;
+		$warehouse_id = $request->kho;
 
 		if(!empty($date1) && !empty($date2)){
 
