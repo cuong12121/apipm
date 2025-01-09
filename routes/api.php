@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('search-data-user-id-package', 'Backend\orderController@SearchDataOfUser');
 
+Route::get('search-data-user-id-package-to-ware-houses', 'Backend\orderController@SearchWareHouse');
+
 Route::get('search-data-order-to-date','Backend\orderController@searchDataToCodeOrder');
 
 // Route::get('search-data-order-to-code','Backend\orderController@searchDataToCodeOrder');

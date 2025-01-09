@@ -31,6 +31,34 @@ class orderController extends Controller
 
     }
 
+    public function SearchWareHouse($value='')
+    {
+    	$date1 =  $request->date1;
+
+    	$date2 =  $request->date2;
+
+
+		$startOfDay = Carbon::parse($date1)->startOfDay();
+		$endOfDay = Carbon::parse($date2)->endOfDay();
+
+		$warehouse_id = $request->options;
+
+		if(!empty($date1) && !empty($date2)){
+
+    		if(!empty($warehouse_id)){
+    			$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('warehouse_id', $warehouse_id)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(500)->toArray();
+    		}
+    		
+	    	if(!empty($data)):
+
+	    		return response($data);
+	    	else:
+	    	
+	    		return [];
+	    	endif;		
+    	}
+    }
+
 
     public function SearchDataOfUser(Request $request)
     {
