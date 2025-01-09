@@ -31,7 +31,7 @@ class orderController extends Controller
 
     }
 
-    public function SearchWareHouse($value='')
+    public function SearchWareHouse(Request $request)
     {
     	$date1 =  $request->date1;
 
