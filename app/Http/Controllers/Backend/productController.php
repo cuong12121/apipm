@@ -21,7 +21,7 @@ class productController extends Controller
             $number_sale[$value->id] = $sl->count();
 
         }
-        $redis = \new Redis();
+        $redis = new \Redis();
 
         // Thiết lập kết nối
         $redis->connect('127.0.0.1', 6379);
