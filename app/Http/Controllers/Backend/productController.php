@@ -10,7 +10,7 @@ class productController extends Controller
 {
     public function count_product_sale()
     {
-        $product = DB::table('fs_products')->select('id')->where('id', '>=',37898354)get();
+        $product = DB::table('fs_products')->select('id')->where('id', '>=',37898354)->get();
 
         $number_sale = [];
 
