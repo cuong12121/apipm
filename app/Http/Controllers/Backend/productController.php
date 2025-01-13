@@ -14,8 +14,6 @@ class productController extends Controller
 
         $number_sale = [];
 
-        dd($product);
-
 
         foreach ($product as $key => $value) {
 
@@ -24,6 +22,8 @@ class productController extends Controller
             $number_sale[$value->id] = $sl->count();
 
         }
+
+
         $redis = new \Redis();
 
         // Thiết lập kết nối
