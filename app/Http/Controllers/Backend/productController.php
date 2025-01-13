@@ -12,7 +12,7 @@ class productController extends Controller
 
     public function getdata_order_to_time()
     {
-        $data =  DB::table('fs_order_uploads_detail')->where('id','>',Carbon::parse('2024-12-01 14:28:15'))->get()->toArray();
+        $data =  DB::table('fs_order_uploads_detail')->where('created_time','>',Carbon::parse('2024-12-01 14:28:15'))->get()->toArray();
 
 
         $redis->connect('127.0.0.1', 6379);
