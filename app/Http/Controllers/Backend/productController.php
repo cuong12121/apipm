@@ -19,6 +19,8 @@ class productController extends Controller
 
             $sl = DB::table('fs_order_uploads_detail')->select('id')->where('is_package',1)->where('sp_duoc_tro_gia_tu_shp','!=',2)->where('product_id',$value->id)->get();
 
+            dd($sl);
+
             $number_sale[$value->id] = $sl->count();
 
         }
