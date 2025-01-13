@@ -13,6 +13,8 @@ class productController extends Controller
     {
         $data =  DB::table('fs_order_uploads_detail')->where('created_time','>','2024-10-01')->get()->toArray();
 
+        return $data;
+
         $redis->connect('127.0.0.1', 6379);
 
         $results = json_encode($data);
@@ -33,6 +35,8 @@ class productController extends Controller
     {
 
         $data_order = $this->getdata_order_to_time();
+
+        dd($data_order);
 
         echo "thành công";
 
