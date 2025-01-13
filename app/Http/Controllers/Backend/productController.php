@@ -11,7 +11,7 @@ class productController extends Controller
 
     public function getdata_order_to_time()
     {
-        $data =  DB::table('fs_order_uploads_detail')->where('created_time','>','2024-06-01')->get()->toArray();
+        $data =  DB::table('fs_order_uploads_detail')->where('created_time','>','2024-10-01')->get()->toArray();
 
         $redis->connect('127.0.0.1', 6379);
 
