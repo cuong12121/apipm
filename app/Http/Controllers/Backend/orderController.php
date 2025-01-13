@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 
+
 class orderController extends Controller
 {
     public function getdata()

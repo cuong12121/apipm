@@ -8,6 +8,8 @@ use App\Http\Controllers\sheetApiController;
 
 use App\Http\Controllers\crawlController;
 
+use App\Http\Controllers\Backend\productController;
+
 
 class UpdateSheetPrice extends Command
 {
@@ -42,9 +44,9 @@ class UpdateSheetPrice extends Command
      */
     public function handle()
     {
-        $crawl = new crawlController();
+        $crawl = new productController();
 
-        $crawl->convert_name_files();
+        $crawl->count_product_sale();
 
     }
 }
