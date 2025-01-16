@@ -935,7 +935,7 @@ class sheetApiController extends Controller
 
     public function show_order_details()
     {
-        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('is_package', 0)->limit(3000)->get();
+        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->limit(5000)->get();
 
         $json = json_encode($result);
 
