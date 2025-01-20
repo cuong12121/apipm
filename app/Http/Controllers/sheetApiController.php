@@ -935,7 +935,10 @@ class sheetApiController extends Controller
 
     public function show_order_details()
     {
-        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->limit(5000)->get();
+        // Ngày hiện tại và 30 ngày trước
+        $thirtyDaysAgo = Carbon::now()->subDays(30);
+
+        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->where('created_at', '>=', $thirtyDaysAgo)->get();
 
         $json = json_encode($result);
 
