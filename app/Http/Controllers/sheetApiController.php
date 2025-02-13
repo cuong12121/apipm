@@ -937,7 +937,7 @@ class sheetApiController extends Controller
     {
         
         $result = DB::table('fs_order_uploads_detail')
-            ->whereBetween('created_time', [Carbon::now()->subDays(3), Carbon::now()])
+            ->whereBetween('created_time', [Carbon::now()->subDays(4), Carbon::now()])
             ->orderBy('id', 'desc')
             ->get();
 
