@@ -933,11 +933,12 @@ class sheetApiController extends Controller
 
     }
 
-    public function show_order_details()
+    public function show_order_details(Request $request)
     {
-        
+        $warehouse_id = $request->warehouse_id; 
+
         $result = DB::table('fs_order_uploads_detail')
-            ->whereBetween('created_time', [Carbon::now()->subDays(4), Carbon::now()])
+            ->whereBetween('created_time', [Carbon::now()->subDays(4), Carbon::now()])->where('warehouse_id', $warehouse_id)
             ->orderBy('id', 'desc')
             ->get();
 
