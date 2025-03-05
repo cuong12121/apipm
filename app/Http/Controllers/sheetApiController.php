@@ -955,7 +955,7 @@ class sheetApiController extends Controller
         // $result = DB::table('fs_order_uploads_detail')
         //     ->whereBetween('created_time', [Carbon::now()->subDays(5), Carbon::now()])->orderBy('id', 'desc')->get();
 
-        $result = DB::table('fs_order_uploads_detail')->orderBy('id', 'desc')->take(8000)->get();
+        $result = DB::table('fs_order_uploads_detail')->where('id','>',1679483)->orderBy('id', 'desc')->get();
 
         $json = json_encode($result);
 
