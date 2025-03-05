@@ -947,6 +947,19 @@ class sheetApiController extends Controller
         return $json;
     }
 
+
+    public function show_order_details_month_3(Request $request)
+    {
+        $warehouse_id = $request->warehouse_id; 
+
+        $result = DB::table('fs_order_uploads_detail')
+            ->whereBetween('created_time', [Carbon::now()->subDays(5), Carbon::now()])->orderBy('id', 'desc')->get();
+
+        $json = json_encode($result);
+
+        return $json;
+    }
+
     //phần check giá cho sheet 
 
     public function getModelsToSheet()
