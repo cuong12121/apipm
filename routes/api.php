@@ -34,9 +34,12 @@ Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
 
 Route::get('show-data-order-new', 'sheetApiController@show_order_details');
 
+Route::get('show-data-order-new-3', 'sheetApiController@show_order_details_month_3');
+
 Route::get('get-data-order-details', 'Backend\orderController@getdata');
 
 Route::get('search-data-order-details', 'Backend\orderController@searchDataOrder');
+
 
 
 
