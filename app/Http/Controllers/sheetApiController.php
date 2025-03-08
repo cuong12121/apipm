@@ -47,11 +47,11 @@ class sheetApiController extends Controller
     }  
 
     public function show_data_pd_12(){
-        $data = DB::table('fs_products')->select('name','code')->where('created_time', '>=', '2024-12-01')->get();
+        $data = DB::table('fs_products')->select('name','code', 'created_time')->where('created_time', '>=', '2024-12-01')->get();
         $dem =0;
         foreach ($data as $key => $value) {
             $dem++;
-            echo $dem.','.$value->name.'với mã sản phẩm là '.$value->code.'<br>';
+            echo $dem.','.$value->name.' với mã sản phẩm là '.$value->code.'tạo ngày'.date('d/m/Y', $value->created_time).'<br>';
         }
     }
 
