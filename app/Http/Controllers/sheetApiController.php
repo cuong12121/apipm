@@ -48,8 +48,10 @@ class sheetApiController extends Controller
 
     public function show_data_pd_12(){
         $data = DB::table('fs_products')->select('name','code')->where('created_time', '>=', '2024-12-01')->get();
+        $dem =0;
         foreach ($data as $key => $value) {
-            echo $value->name.'với mã sản phẩm là '.$value->code.'<br>';
+            $dem++;
+            echo $dem.','.$value->name.'với mã sản phẩm là '.$value->code.'<br>';
         }
     }
 
