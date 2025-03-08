@@ -47,7 +47,7 @@ class sheetApiController extends Controller
     }  
 
     public function show_data_pd_12(){
-        $data = DB::table('fs_products')->select('name','code', 'created_time')->where('created_time', '>=', '2024-12-01')->get();
+        $data = DB::table('fs_products')->select('name','code', 'created_time')->where('created_time', '>=', '2024-11-01')->get();
         $dem =0;
         foreach ($data as $key => $value) {
             $dem++;
