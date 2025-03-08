@@ -23,6 +23,8 @@ Route::get('test-api2', 'sheetApiController@showComboCodePD');
 
 Route::get('test-api3', 'sheetApiController@show_data_sale');
 
+Route::get('get-all-pd', 'sheetApiController@show_data_pd_12');
+
 
 
 Route::get('test-api-1', 'sheetApiController@getdataQuantityMN');

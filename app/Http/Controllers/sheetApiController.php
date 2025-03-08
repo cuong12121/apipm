@@ -44,7 +44,15 @@ class sheetApiController extends Controller
         }
        echo 'thành công';
     
-    }    
+    }  
+
+    public function show_data_pd_12(){
+        $data = DB::table('fs_products')->select('name','code')->where('created_time', '>=', '2024-12-01')->get();
+        foreach ($data as $key => $value) {
+            echo $value->name.'với mã sản phẩm là '.$value->code.'<br>';
+        }
+    }
+
 
     public function show_data_sale()
     {
