@@ -51,7 +51,7 @@ class sheetApiController extends Controller
         $dem =0;
         foreach ($data as $key => $value) {
             $dem++;
-            echo $dem.','.$value->name.' với mã sản phẩm là '.$value->code.'tạo ngày'.date('d/m/Y', $value->created_time).'<br>';
+            echo $dem.','.$value->name.' với mã sản phẩm là '.$value->code.'tạo ngày'.date('d/m/Y', strtotime($value->created_time)).'<br>';
         }
     }
 
