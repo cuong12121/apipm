@@ -969,7 +969,13 @@ class sheetApiController extends Controller
 
         $json = json_encode($result);
 
-        return $json;
+        $count = $result->count();
+
+        $data['count'] = $count;
+
+        $data['data'] =  $json;
+
+        return json_encode($data);
     }
 
     //phần check giá cho sheet 
