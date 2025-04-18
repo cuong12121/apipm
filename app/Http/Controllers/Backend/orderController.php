@@ -71,7 +71,7 @@ class orderController extends Controller
 		$startOfDay = Carbon::parse($date1)->startOfDay();
 		$endOfDay = Carbon::parse($date2)->endOfDay();
 
-		
+		$kho = $request->kho;
 
     	$user_package_id = $request->name;
 
@@ -81,7 +81,14 @@ class orderController extends Controller
     			$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->where('user_package_id', $user_package_id)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(12)->toArray();
     		}
     		else{
-    			$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(550)->toArray();
+
+    			if(!empty($kho)){
+    				$data = DB::table('fs_order_uploads_detail')->where('warehouse_id', $kho)->where('is_package', 1)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(550)->toArray();
+    			}
+    			else{
+    				$data = DB::table('fs_order_uploads_detail')->where('is_package', 1)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(550)->toArray();
+    			}
+    			
     		}
     		
     		
