@@ -82,7 +82,7 @@ class orderController extends Controller
     		}
     		else{
 
-    			if(!empty($kho)){
+    			if($kho>0){
     				$data = DB::table('fs_order_uploads_detail')->where('warehouse_id', $kho)->where('is_package', 1)->whereBetween('date_package', [$startOfDay, $endOfDay])->orderBy('date_package', 'desc')->paginate(550)->toArray();
     			}
     			else{
