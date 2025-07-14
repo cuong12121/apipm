@@ -223,16 +223,14 @@ class orderController extends Controller
     {
     	$filters = json_decode($request->data, true);
     	$data = DB::table('fs_order_uploads_detail')
-	    ->where([
-	        'platform_id' => $filters['platform_id'],
-	        'warehouse_id' => $filters['warehouse_id'],
-	        'created_time' => $filters['created_time'],
-	        'house_id' => $filters['house_id'],
-	    ])
+	    ->where('platform_id', $filters['platform_id'])
+	    ->where('warehouse_id', $filters['warehouse_id'])
+	    ->where('house_id', $filters['house_id'])
+	    ->where('created_time', '>=', $filters['created_time'])
 	    ->get();
 	    $datas = json_encode($data);
 
-	    return response($filters);
+	    return response($datas);
 
     }
 }
