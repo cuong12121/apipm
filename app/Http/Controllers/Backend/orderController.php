@@ -223,7 +223,8 @@ class orderController extends Controller
     {
     	$filters = json_decode($request->data, true);
 
-    	response($filters)
+    	
+    	return response($filters);
 
     	
     	$data = DB::table('fs_order_uploads_detail')
