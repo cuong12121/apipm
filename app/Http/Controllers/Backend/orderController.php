@@ -218,4 +218,21 @@ class orderController extends Controller
     	return response($datas);
 
     }
+
+    public function get_info_hour_platform(Request $request)
+    {
+    	$filters = json_decode($request->data, true);
+    	$data = DB::table('fs_order_uploads_detail')
+	    ->where([
+	        'platform_id' => $filters['platform_id'],
+	        'warehouse_id' => $filters['warehouse_id'],
+	        'created_time' => $filters['created_time'],
+	        'house_id' => $filters['house_id'],
+	    ])
+	    ->get();
+	    $datas = json_encode($data);
+
+	    return response($datas);
+
+    }
 }

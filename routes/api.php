@@ -27,8 +27,7 @@ Route::get('search-data-order-to-date','Backend\orderController@searchDataToCode
 
 Route::get('history_print','Backend\orderController@history_print');
 
-
-
+Route::get('data-order-print', 'Backend\orderController@get_info_hour_platform');
 
 Route::get('show-product-qualtity', 'sheetApiController@showQualtity');
 
