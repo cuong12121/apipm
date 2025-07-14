@@ -232,7 +232,7 @@ class orderController extends Controller
 	    ->get();
 	    $datas = json_encode($data);
 
-	    return response($datas);
+	    return response($filters);
 
     }
 }
