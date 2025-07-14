@@ -25,7 +25,7 @@ Route::get('search-data-user-id-package-to-ware-houses', 'Backend\orderControlle
 
 Route::get('search-data-order-to-date','Backend\orderController@searchDataToCodeOrder');
 
-// Route::get('search-data-order-to-code','Backend\orderController@searchDataToCodeOrder');
+Route::get('history_print','Backend\orderController@history_print');
 
 
 
