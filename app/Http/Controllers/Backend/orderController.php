@@ -222,6 +222,10 @@ class orderController extends Controller
     public function get_info_hour_platform(Request $request)
     {
     	$filters = json_decode($request->data, true);
+
+    	response($filters)
+
+    	
     	$data = DB::table('fs_order_uploads_detail')
 	    ->where('platform_id', $filters['platform_id'])
 	    ->where('warehouse_id', $filters['warehouse_id'])
