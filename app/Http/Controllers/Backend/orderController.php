@@ -213,7 +213,7 @@ class orderController extends Controller
     public function history_print()
     {
     	
-    	$data = DB::table('fs_order_uploads_history_prints')->where('created_time', $now)->where('warehouse_id', 6)->where('platform_id', 2)->orderBy('id', 'desc')->take(10)->get()->toArray();
+    	$data = DB::table('fs_order_uploads_history_prints')->where('warehouse_id', 6)->where('platform_id', 2)->orderBy('id', 'desc')->take(10)->get()->toArray();
     	$datas = json_encode($data);
     	return response($datas);
 
